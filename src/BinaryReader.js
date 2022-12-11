@@ -83,10 +83,12 @@ export class BinaryReader {
 	}
 
 	setString(string, byteOffset = this.byteOffset) {
-		let writeBuffer = new Uint8Array(this.buffer, byteOffset + this._dataView.byteOffset, string.length);
+		let length = string.length;
+		this.byteOffset = byteOffset + length;
+		let writeBuffer = new Uint8Array(this.buffer, byteOffset + this._dataView.byteOffset, length);
 		//TODO: check len
 
-		for (var i = 0, length = string.length; i < length; i++) {
+		for (var i = 0, l = length; i < l; i++) {
 			writeBuffer[i] = string.charCodeAt(i) & 0xff;
 		}
 	}
