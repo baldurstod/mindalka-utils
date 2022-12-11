@@ -82,7 +82,7 @@ export class BinaryReader {
 		return string;
 	}
 
-	setString(byteOffset = this.byteOffset, string) {
+	setString(string, byteOffset = this.byteOffset) {
 		let writeBuffer = new Uint8Array(this.buffer, byteOffset + this._dataView.byteOffset, string.length);
 		//TODO: check len
 
