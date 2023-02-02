@@ -14,10 +14,10 @@ export class BinaryReader {
 	constructor(buffer, byteOffset, byteLength, littleEndian = true) {
 		this.byteOffset = 0;
 		this.littleEndian = littleEndian;
-		this._initDataview(buffer, byteOffset, byteLength);
+		this.#initDataview(buffer, byteOffset, byteLength);
 	}
 
-	_initDataview(buffer, byteOffset, byteLength) {
+	#initDataview(buffer, byteOffset, byteLength) {
 		if (buffer instanceof BinaryReader) {
 			this._dataView = new DataView(buffer.buffer, byteOffset ? byteOffset + buffer._dataView.byteOffset : buffer._dataView.byteOffset, byteLength);
 		} else if (buffer instanceof Uint8Array) {
